@@ -62,7 +62,7 @@ func calcRandVal(min int, max int) int {
 	return myval
 }
 
-func calcPercentage(u *userProfile) {
+func calcPercentage(u *userProfile) (int, int) {
 	// ersten Prozentwert errechnen
 	a := calcRandVal(10, 90)
 	anew := float64(a)
@@ -77,20 +77,37 @@ func calcPercentage(u *userProfile) {
 	secval := (max / 100.) * bnew
 	val2 := int(secval)
 
-	fmt.Printf("%d + %d = ?\n", val1, val2)
-
+	return val1, val2
 }
 
 func createTasks(u *userProfile) {
 
 	for i := 0; i < u.number; i++ {
-		calcPercentage(u)
+		val1, val2 := calcPercentage(u)
+		erg := val1 + val2
+		for {
+			fmt.Printf("%d + %d = ?\n> ", val1, val2)
+			scanner := bufio.NewScanner(os.Stdin)
+			scanner.Scan()
+			val := scanner.Text()
+			input, err := strconv.Atoi(val)
+			if input == erg {
+				fmt.Println("RICHTIG!")
+				break
+			}
+			if err != nil {
+				fmt.Println("Das war keine Zahl!")
+				continue
+			}
+			if input != erg {
+				fmt.Println("FALSCH!")
+			}
+		}
 	}
 }
 
 //--------------------------------------
 func main() {
-	fmt.Printf("\n~~~~~~ Willkommen bei Mathematica ~~~~~\n\n")
 
 	// Namen abfragen
 	u := userProfile{}
@@ -109,7 +126,7 @@ func main() {
 	u.calculus = "+-"
 
 	// Höhe der Zahlen abfragen
-	u.max = 50
+	u.max = 20
 
 	createTasks(&u)
 	//
