@@ -1,0 +1,14 @@
+{
+	"ce":{
+		"host": "ndb2",
+		"name": "IPLS",
+		"user": "admin",
+		"pwd": "geheim_ce"
+	},
+	"bb":{
+		"host": "ndb2",
+		"name": "IPLS_BB",
+		"user": "develop",
+		"pwd": "geheim_bb"
+	}
+}

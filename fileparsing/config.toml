@@ -1,0 +1,20 @@
+Title = "Database Config File"
+
+[db]
+	[db.ce]
+		host = "ndb2"
+		name = "IPLS"
+		user = "user1"
+		pwd = "geheim"
+
+	[db.bb]
+		host = "ndb2"
+		name = "IPLS_BB"
+		user = "userbb"
+		pwd = "supergeheim"
+
+	[db.ml]
+		host = "ndb3.ml.ipsl.t-systems.com"
+		name = "IPLS_ML"
+		user = "bla"
+		pwd = "blubb"
